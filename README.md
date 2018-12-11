@@ -7,7 +7,7 @@ A web app that functions as a burger logger with MySQL, Node, Express, Handlebar
 * You can enter a new burger name in the input format the bottom and a new burger will be added to the "Burger on the Menu".
 
 ##App Deployment on Heroku:
-![Application](https://desolate-cliffs-89269.herokuapp.com/)
+[Link to the Application](https://desolate-cliffs-89269.herokuapp.com)
 
 App View
-![View](public/assets/img/Screenshot.png)
+[View](public/assets/img/Screenshot.png)
