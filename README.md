@@ -8,4 +8,4 @@ A web app that functions as a burger logger with MySQL, Node, Express, Handlebar
 
 ## App View
 
-![View](/public/assets/img/Screenshot.png)
+![View](public/assets/img/Screenshot.png)
