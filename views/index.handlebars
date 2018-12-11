@@ -1,0 +1,81 @@
+<div class="container">
+  <h1 class="display-1">Time For A Burger</h1>
+
+  <img src="/assets/img/Burger1.jpg" alt="burger image" class="center burg_img">
+  <br />
+
+  <div class="card-group">
+
+    <div id="make" class="card" style="width: 18rem;">
+      <h5 class="card-title text-center my-2">Burgers On the Menu</h5>
+      <ul class="list-group list-group-flush">
+        {{#each burgers}}
+        {{#unless devoured}}
+        <li class="list-group-item"><button type="button" class="btn btn-light devour" data-id={{id}}>Devour A
+            {{burger_name}} burger!</button></li>
+        {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+
+    <div id="devoured" class="card" style="width: 18rem;">
+      <h5 class="card-title text-center my-2">Devoured Burgers</h5>
+      <ul class="list-group list-group-flush">
+        {{#each burgers}}
+        {{#if devoured}}
+        <li class="list-group-item">
+          <h3><span class="badge badge-secondary">{{burger_name}} burger</span></h3>
+        </li>
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <br />
+  <div class="NewBurger">
+    <h4 class="display-4">Create your own customized Burger</h4>
+    <form class="form-inline">
+      <div class="form-group mb-2">
+        <input type="text" class="form-control mx-3" id="burgerName" placeholder="burger name">
+        <button id="submit" type="submit" class="btn btn-primary mx-3">Make Burger</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  $(function () {
+
+    $("#submit").on("click", function (event) {
+      event.preventDefault();
+
+      var name = $("#burgerName").val().trim();
+      console.log("new burger name is " + name);
+
+      $.ajax("/api/burger/", {
+        type: "POST",
+        data: { burgerName: name }
+      }).then(function (data) {
+        console.log("Created New Burger!");
+        location.reload();
+      })
+    });
+
+    $("button.devour").on("click", function (event) {
+      event.preventDefault();
+
+      var id = $(this).data("id");
+
+      $.ajax("/api/burger/", {
+        type: "PUT",
+        data: { id: id }
+      }).then(function () {
+        console.log("Yum, that was good!")
+        location.reload();
+      });
+    });
+
+  });
+
+</script>
