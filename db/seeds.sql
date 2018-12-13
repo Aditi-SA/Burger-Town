@@ -1,4 +1,4 @@
-USE burgers_db;
+USE ezb7t8d4qdjv0lib;
 
 INSERT INTO burgers (burger_name, devoured) VALUES
 ("Jalapeno Cheese", false),
